@@ -24,7 +24,7 @@ const App = () => {
 		useReducer(reducer, globalStore),
 		'state'
 	);
-	console.log(state);
+
 	const theme = createMuiTheme({
 		palette: {
 			type: state.myTheme, // "light" or "dark"
