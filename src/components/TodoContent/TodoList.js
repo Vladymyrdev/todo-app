@@ -16,6 +16,7 @@ import {
 	onRemoveFromComplitedList,
 	onRemoveFromToDoList,
 } from '../TodoProvider/reducer/actions';
+import { RouteNames } from '../../route';
 
 export const TodoList = () => {
 	const history = useHistory();
@@ -27,11 +28,11 @@ export const TodoList = () => {
 	const countTodoTasks = todoList.length;
 	const countComplitedTasks = complitedList.length;
 	let comment;
-	if (countTodoTasks === 0 && history.location.pathname === '/home') {
+	if (countTodoTasks === 0 && history.location.pathname === RouteNames.HOME) {
 		comment = 'So when you are free, start another work to get tired!';
 	} else if (
 		countComplitedTasks === 0 &&
-		history.location.pathname === '/complited_tasks'
+		history.location.pathname === RouteNames.COMPLITED_TASKS
 	) {
 		comment = "You don't have completed tasks yet, start working already";
 	} else {
@@ -86,7 +87,7 @@ export const TodoList = () => {
 			<Grid container spacing={2}>
 				<Grid item xs={12}>
 					<Typography variant="h6">
-						{history.location.pathname === '/home'
+						{history.location.pathname === RouteNames.HOME
 							? `Todo List (${countTodoTasks})`
 							: `Complited List (${countComplitedTasks})`}
 					</Typography>
@@ -94,7 +95,7 @@ export const TodoList = () => {
 					<br />
 					<div>
 						<List>
-							{history.location.pathname === '/home'
+							{history.location.pathname === RouteNames.HOME
 								? mappedTodoList
 								: mappedComplitedList}
 						</List>

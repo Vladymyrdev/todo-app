@@ -15,6 +15,7 @@ import { createMuiTheme, CssBaseline, Container } from '@material-ui/core';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import { HomePage } from './pages/HomePage';
 import { ComplitedTaskPage } from './pages/ComplitedTaskPage';
+import { RouteNames } from './route';
 
 const App = () => {
 	const globalStore = usePersistedContext(useContext(Store), 'state');
@@ -38,10 +39,10 @@ const App = () => {
 						<CssBaseline />
 						<NavBar />
 						<Switch>
-							<Route path="/home">
+							<Route path={RouteNames.HOME}>
 								<HomePage />
 							</Route>
-							<Route path="/complited_tasks">
+							<Route path={RouteNames.COMPLITED_TASKS}>
 								<ComplitedTaskPage />
 							</Route>
 							<Redirect to="/home" />
