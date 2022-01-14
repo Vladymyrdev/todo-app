@@ -1,6 +1,6 @@
 import React, { useContext, useMemo } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Store } from '../../context';
+import { Store } from '../TodoProvider/context';
 import DeleteIcon from '@material-ui/icons/Delete';
 import {
 	List,
@@ -11,6 +11,11 @@ import {
 	Grid,
 	Typography,
 } from '@material-ui/core';
+import {
+	onAddComplited,
+	onRemoveFromComplitedList,
+	onRemoveFromToDoList,
+} from '../TodoProvider/reducer/actions';
 
 export const TodoList = () => {
 	const history = useHistory();
@@ -19,8 +24,8 @@ export const TodoList = () => {
 	const todoList = state?.todos;
 	const complitedList = state?.complitedTasks;
 
-	let countTodoTasks = state.todos.length;
-	let countComplitedTasks = state.complitedTasks.length;
+	const countTodoTasks = todoList.length;
+	const countComplitedTasks = complitedList.length;
 	let comment;
 	if (countTodoTasks === 0 && history.location.pathname === '/home') {
 		comment = 'So when you are free, start another work to get tired!';
@@ -43,8 +48,8 @@ export const TodoList = () => {
 							edge="end"
 							aria-label="delete"
 							onClick={() => {
-								dispatch({ type: 'DELETE_FROM_TODO_LIST', payload: t });
-								dispatch({ type: 'COMPLITED', payload: t });
+								dispatch(onRemoveFromToDoList(t));
+								dispatch(onAddComplited(t));
 							}}
 						>
 							<DeleteIcon />
@@ -64,9 +69,7 @@ export const TodoList = () => {
 						<IconButton
 							edge="end"
 							aria-label="delete"
-							onClick={() =>
-								dispatch({ type: 'DELETE_FROM_COMPLITED_LIST', payload: t })
-							}
+							onClick={() => dispatch(onRemoveFromComplitedList(t))}
 						>
 							<DeleteIcon />
 						</IconButton>

@@ -5,8 +5,8 @@ import ReactDOM from 'react-dom';
 import NavBar from './components/Navbar/NavBar';
 
 //Add context, reducer and usePersist(LocalStorage)
-import { Store } from './context';
-import reducer from './reducer';
+import { Store } from './components/TodoProvider/context';
+import reducer from './components/TodoProvider/reducer/reducer';
 import { usePersistedContext, usePersistedReducer } from './utils/usePersist';
 
 // Metarial-UI Theme(Dark or Light)
@@ -23,7 +23,7 @@ const App = () => {
 		useReducer(reducer, globalStore),
 		'state'
 	);
-
+	console.log(state);
 	const theme = createMuiTheme({
 		palette: {
 			type: state.myTheme, // "light" or "dark"

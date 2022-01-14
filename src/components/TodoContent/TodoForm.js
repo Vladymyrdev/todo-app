@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { Grid, Button, TextField } from '@material-ui/core';
-import { Store } from '../../context';
+import { Store } from '../TodoProvider/context';
+import { onAddToDo } from '../TodoProvider/reducer/actions';
 
 export const TodoForm = () => {
 	const { dispatch } = useContext(Store);
@@ -16,7 +17,7 @@ export const TodoForm = () => {
 	};
 
 	const handleTodoAdd = (e) => {
-		dispatch({ type: 'ADD_TODO', payload: todo });
+		dispatch(onAddToDo(todo));
 		setTodo('');
 	};
 

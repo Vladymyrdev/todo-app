@@ -1,6 +1,8 @@
+import { ActionTypes } from './types';
+
 const reducer = (state, action) => {
 	switch (action.type) {
-		case 'ADD_TODO':
+		case ActionTypes.ADD_TODO:
 			if (!action.payload) {
 				return state;
 			}
@@ -11,24 +13,24 @@ const reducer = (state, action) => {
 				...state,
 				todos: [...state.todos, action.payload],
 			};
-		case 'DELETE_FROM_TODO_LIST':
+		case ActionTypes.DELETE_FROM_TODO_LIST:
 			return {
 				...state,
 				todos: state.todos.filter((t) => t !== action.payload),
 			};
-		case 'DELETE_FROM_COMPLITED_LIST':
+		case ActionTypes.DELETE_FROM_COMPLITED_LIST:
 			return {
 				...state,
 				complitedTasks: state.complitedTasks.filter(
 					(t) => t !== action.payload
 				),
 			};
-		case 'COMPLITED':
+		case ActionTypes.ADD_COMPLITED:
 			return {
 				...state,
 				complitedTasks: state.complitedTasks.concat([action.payload]),
 			};
-		case 'THEME':
+		case ActionTypes.THEME:
 			return {
 				...state,
 				myTheme: action.payload,

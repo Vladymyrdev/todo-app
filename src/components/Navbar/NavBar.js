@@ -9,8 +9,9 @@ import {
 	Tooltip,
 } from '@material-ui/core';
 
-import { Store } from '../../context';
+import { Store } from '../TodoProvider/context';
 import NavDrawer from './NavDrawer';
+import { enterTheme } from '../TodoProvider/reducer/actions';
 
 const useStyles = makeStyles((theme) => ({
 	root: {
@@ -36,7 +37,7 @@ const NavBar = () => {
 		} else {
 			mode = 'dark';
 		}
-		dispatch({ type: 'THEME', payload: mode });
+		dispatch(enterTheme(mode));
 	};
 
 	const ToggleButton = () => {
@@ -48,6 +49,10 @@ const NavBar = () => {
 	};
 	const toggleDrawer = (booleanValue) => () => {
 		setDrawerOpened(booleanValue);
+	};
+
+	const handleChengeTheme = () => {
+		changeTheme(mode);
 	};
 
 	return (
@@ -68,7 +73,7 @@ const NavBar = () => {
 					</Typography>
 
 					<Tooltip title="Toggle light/dark theme">
-						<IconButton color="inherit" onClick={() => changeTheme(mode)}>
+						<IconButton color="inherit" onClick={handleChengeTheme}>
 							<ToggleButton />
 						</IconButton>
 					</Tooltip>
