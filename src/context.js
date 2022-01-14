@@ -1,13 +1,12 @@
-import React from "react";
+import React from 'react';
 
-const Store = React.createContext({
-  todos: [
-    "Learn HTML and CSS",
-    "Learn JavaScript(ES6+)",
-    "Design with Figma",
-    "Develop applications with 'React' and 'Material-UI'"
-  ],
-  myTheme: "light"
+export const Store = React.createContext({
+	todos: [
+		'Learn HTML and CSS',
+		'Learn JavaScript(ES6+)',
+		'Design with Figma',
+		"Develop applications with 'React' and 'Material-UI'",
+	],
+	myTheme: 'light',
+	complitedTasks: [],
 });
-
-export default Store;

@@ -2,12 +2,12 @@ import React, { useContext, useReducer } from 'react';
 import ReactDOM from 'react-dom';
 
 // Add components
-import NavBar from './components/NavBar';
+import NavBar from './components/Navbar/NavBar';
 
 //Add context, reducer and usePersist(LocalStorage)
-import Store from './context';
+import { Store } from './context';
 import reducer from './reducer';
-import { usePersistedContext, usePersistedReducer } from './usePersist';
+import { usePersistedContext, usePersistedReducer } from './utils/usePersist';
 
 // Metarial-UI Theme(Dark or Light)
 import { ThemeProvider } from '@material-ui/core/styles';
